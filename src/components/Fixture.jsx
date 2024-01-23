@@ -4,7 +4,7 @@ import "../css/fixture.css";
 
 export const Fixture = () => {
 
-const {games} = useFetchGames('2024-01-22');
+const {games} = useFetchGames('2024-01-23');
 let gamesReducidos = [];
 games.sort( (a,b) => {
 
@@ -21,17 +21,16 @@ if (games.length > 0) {
     const resultado = games.reduce((acumulador,game) => {
         
 
-        if(!acumulador[game.leagueName]){
-            acumulador[game.leagueName] = [];
+        if(!acumulador[game.league.name]){
+            acumulador[game.league.name] = [];
         }
 
-        acumulador[game.leagueName].push(game);
+        acumulador[game.league.name].push(game);
 
         return acumulador;
     }, {});
 
     gamesReducidos = Object.values(resultado);
-    console.log(gamesReducidos)
 }
 
   return (
@@ -42,7 +41,15 @@ if (games.length > 0) {
         <div>
             {
                 gamesReducidos.map( elem => (
-                    console.log('hola')
+                  <div key={elem[0].id}>
+                    <div className="liga">
+                        <img src={elem[0].league.logo} alt="" />
+                        <h1>{elem[0].league.name}</h1>
+                    </div>
+                    {elem.map(game => (
+                        <Game key={game.id} {...game}/>
+                    ))}
+                  </div>
                 ))
             }
         </div>

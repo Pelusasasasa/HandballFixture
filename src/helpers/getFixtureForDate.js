@@ -13,16 +13,28 @@ export const getFixtureForDate = async(date) => {
         {
             id: game.id,
             date: game.date,
-            leagueLogo: game.league.logo,
-            leagueName: game.league.name,
-            statusShort: game.status.short,
-            statusLong: game.status.long,
-            teamAwayName: game.teams.away.name,
-            teamAwayLogo: game.teams.away.logo,
-            teamHomeName: game.teams.home.name,
-            teamHomeLogo: game.teams.home.logo,
-            scoresAway: game.scores.away,
-            scoresHome: game.scores.home,
+            league:{
+                name: game.league.name,
+                logo: game.league.logo,
+            },
+            status:{
+                short: game.status.short,
+                long: game.status.long,
+            },
+            teams:{
+                away:{
+                    name: game.teams.away.name,
+                    logo: game.teams.away.logo,
+                },
+                home:{
+                    name: game.teams.home.name,
+                    logo: game.teams.home.logo,
+                }
+            },
+            scores: {
+                home: game.scores.home,
+                away: game.scores.away,
+            }
         }
     ))
 

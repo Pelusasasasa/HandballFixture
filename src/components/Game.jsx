@@ -1,21 +1,21 @@
 import '../css/game.css';
 
-export const Game = ({id,date,leagueLogo,leagueName,statusShort,statusLong,scoresHome,scoresAway,teamHomeLogo,teamAwayLogo,teamAwayName,teamHomeName}) => {
-        
+export const Game = ({id,date,status,teams,scores}) => {
+      let time = '';
+      if (status.short === "NS") {
+        time = date.slice(11,16);
+      }else{
+        time = status.short;
+      }
+
+
   return (
-    <div id={id}>
-        <div className="liga">
-            <img src={leagueLogo} alt={leagueName} />
-            <h1>{leagueName}</h1>
-            <img src={leagueLogo} alt={leagueName} />
+        <div id={id} className='estadistica'>
+            <p className='score'>{scores.home}</p>
+            <img src={teams.home.logo} alt={teams.home.name} />
+            <p className='time'>{time}</p>
+            <img src={teams.away.logo} alt={teams.away.name} />
+            <p className='score'>{scores.away}</p>
         </div>
-        <div className='estadistica'>
-            <p className='score'>{scoresHome}</p>
-            <img src={teamHomeLogo} alt={teamHomeName} />
-            <p className='time'>{statusShort}</p>
-            <img src={teamAwayLogo} alt={teamAwayName} />
-            <p className='score'>{scoresHome}</p>
-        </div>
-    </div>
   )
 }

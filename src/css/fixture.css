@@ -2,3 +2,16 @@
     display: grid;
     grid-template-columns: 1fr 3fr;
 }
+
+.liga{
+    display: flex;
+    justify-content: center;
+    background-color: lightgray;
+    padding: 20px;
+    gap: 10px;
+}
+
+.liga img{
+    width: 80px;
+    height: 80px;
+}
