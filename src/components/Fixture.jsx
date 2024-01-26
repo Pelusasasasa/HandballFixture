@@ -1,46 +1,25 @@
 import { useFetchGames } from "../hooks/useFetchGames";
 import { Game } from "./Game";
 import "../css/fixture.css";
+import { useFetchLeagues } from "../hooks/useFetchLeagues";
+import { Menu } from "./Menu";
+import {leagues} from "../data/leagues";
 
 export const Fixture = () => {
 
-const {games} = useFetchGames('2024-01-23');
-let gamesReducidos = [];
-games.sort( (a,b) => {
+// const {games} = useFetchGames('2024-01-23');
+// const {leagues} = useFetchLeagues();
 
-    if (a.leagueName > b.leagueName) {
-        return 1;
-    }else if(a.leagueName < b.leagueName){
-        return -1;
-    }
-    return 0;
 
-});
-
-if (games.length > 0) {
-    const resultado = games.reduce((acumulador,game) => {
-        
-
-        if(!acumulador[game.league.name]){
-            acumulador[game.league.name] = [];
-        }
-
-        acumulador[game.league.name].push(game);
-
-        return acumulador;
-    }, {});
-
-    gamesReducidos = Object.values(resultado);
-}
 
   return (
     <section className="fixture">
         <div>
-            Menu
+            <Menu leagues={leagues}/>
         </div>
         <div>
-            {
-                gamesReducidos.map( elem => (
+            {/* {
+                games.map( elem => (
                   <div key={elem[0].id}>
                     <div className="liga">
                         <img src={elem[0].league.logo} alt="" />
@@ -51,7 +30,7 @@ if (games.length > 0) {
                     ))}
                   </div>
                 ))
-            }
+            } */}
         </div>
     </section>
   )

@@ -1,11 +1,16 @@
 import axios from "axios"
+
+const API_KEY = 'c743390c2b691ef922b56447758aa2be';
+const API_HOST = 'v1.handball.api-sports.io';
 const URL = 'https://v1.handball.api-sports.io/games';
+
+
 
 export const getFixtureForDate = async(date) => {
     const data = (await axios.get(`${URL}?date=${date}`,{
         headers: {
-            'x-rapidapi-host': 'v1.handball.api-sports.io',
-            'x-rapidapi-key': 'c743390c2b691ef922b56447758aa2be'
+            'x-rapidapi-host': API_HOST,
+            'x-rapidapi-key': API_KEY
         }
     })).data;
 
@@ -36,7 +41,35 @@ export const getFixtureForDate = async(date) => {
                 away: game.scores.away,
             }
         }
-    ))
+    ));
 
-    return games;
+    let gamesReducidos = [];
+    games.sort( (a,b) => {
+
+        if (a.leagueName > b.leagueName) {
+            return 1;
+        }else if(a.leagueName < b.leagueName){
+            return -1;
+        }
+        return 0;
+
+    });
+
+if (games.length > 0) {
+    const resultado = games.reduce((acumulador,game) => {
+        
+
+        if(!acumulador[game.league.name]){
+            acumulador[game.league.name] = [];
+        }
+
+        acumulador[game.league.name].push(game);
+
+        return acumulador;
+    }, {});
+
+    gamesReducidos = Object.values(resultado);
+}
+
+    return gamesReducidos;
 }
