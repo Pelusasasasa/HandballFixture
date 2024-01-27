@@ -1,0 +1,33 @@
+menu{
+   display: flex;
+   flex-direction: column; 
+}
+
+.menu .menu-titulo{
+    display: flex;
+    align-items: center;
+    background-color: lightgray;
+    padding: 10px 0;
+}
+
+.menu .menu-titulo img{
+    width: 20px;
+    height: auto;
+}
+
+.menu .menu-titulo h2{
+    margin: 0;
+}
+
+.menu .menu-item{
+    background-color: gray;
+    margin: 0;
+    font-size: 20px;
+    color: white;
+    padding: 10px 0;
+}
+
+.menu .menu-item:hover{
+    cursor: pointer;
+    background-color: rgba(128,128,128,0.7);
+}

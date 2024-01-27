@@ -1,6 +1,7 @@
+import '../css/menu.css';
+
 export const MenuItem = ({league}) => {
-    console.log(league)
   return (
-    <div>{league.name}</div>
+    <p id={league.id} className="menu-item">{league.name}</p>
   )
 };

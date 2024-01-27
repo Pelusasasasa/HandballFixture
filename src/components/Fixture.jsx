@@ -3,12 +3,11 @@ import { Game } from "./Game";
 import "../css/fixture.css";
 import { useFetchLeagues } from "../hooks/useFetchLeagues";
 import { Menu } from "./Menu";
-import {leagues} from "../data/leagues";
 
 export const Fixture = () => {
 
-// const {games} = useFetchGames('2024-01-23');
-// const {leagues} = useFetchLeagues();
+const {games} = useFetchGames('2024-01-26');
+const {leagues} = useFetchLeagues();
 
 
 
@@ -18,7 +17,7 @@ export const Fixture = () => {
             <Menu leagues={leagues}/>
         </div>
         <div>
-            {/* {
+            {
                 games.map( elem => (
                   <div key={elem[0].id}>
                     <div className="liga">
@@ -30,7 +29,10 @@ export const Fixture = () => {
                     ))}
                   </div>
                 ))
-            } */}
+            }
+        </div>
+        <div className="none">
+          
         </div>
     </section>
   )

@@ -6,7 +6,7 @@ export const useFetchLeagues = () => {
 
     const getLigas = async() => {
         const ligas = await getLeagues();
-        setLeagues(ligas);
+        setLeagues(Object.values(ligas));
     };
 
     useEffect(() => {

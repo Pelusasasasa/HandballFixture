@@ -6,7 +6,7 @@ export const useFetchGames = (date) => {
   const [games, setGames] = useState([]);
 
   const getGames = async () => {
-    // const newGames = await getFixtureForDate(date);
+    const newGames = await getFixtureForDate(date);
     setGames(newGames);
   }
 

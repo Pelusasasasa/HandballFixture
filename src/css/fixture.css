@@ -1,6 +1,12 @@
+.none{
+    display: none;
+}
+
 .fixture{
     display: grid;
     grid-template-columns: 1fr 3fr;
+    gap: 150px;
+    background-color: lightgray;
 }
 
 .liga{

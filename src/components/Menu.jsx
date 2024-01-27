@@ -1,15 +1,15 @@
 import { MenuItem } from "./MenuItem";
-
+import "../css/menu.css";
 export const Menu = ({leagues}) => {
     
   return (
-    <div>
+    <div className="menu">
       {
         leagues.map((data) => (
           <div>
-            <div>
+            <div className="menu-titulo">
               <img src={data[0].country.flag} alt={data[0].country.id} />
-              <h1>{data[0].country.name}</h1>
+              <h2>{data[0].country.name}</h2>
             </div>
             {
               data.map((league) => (
