@@ -16,7 +16,7 @@ const displayGame = () => {
 
   return (
     <section className="fixture">
-        <div>
+        {/* <div>
             <Menu leagues={leagues}/>
         </div>
         <div>
@@ -33,7 +33,7 @@ const displayGame = () => {
                   </div>
                 ))
             }
-        </div>
+        </div> */}
         <div id='game' className="none">
           <GameEstadisticas id='153219'/>
         </div>
