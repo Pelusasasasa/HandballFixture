@@ -3,13 +3,12 @@ import { Game } from "./Game";
 import "../css/fixture.css";
 import { useFetchLeagues } from "../hooks/useFetchLeagues";
 import { Menu } from "./Menu";
+import { GameEstadisticas } from "./GameEstadisticas";
 
 export const Fixture = () => {
 
-const {games} = useFetchGames('2024-01-26');
+const {games} = useFetchGames('2024-01-29');
 const {leagues} = useFetchLeagues();
-
-
 
   return (
     <section className="fixture">
@@ -32,7 +31,7 @@ const {leagues} = useFetchLeagues();
             }
         </div>
         <div className="none">
-          
+          <GameEstadisticas id='153219'/>
         </div>
     </section>
   )

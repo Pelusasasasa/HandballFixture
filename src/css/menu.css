@@ -1,6 +1,10 @@
-menu{
+.menu{
    display: flex;
    flex-direction: column; 
+   overflow-y: scroll;
+   height: 95vh;
+   margin-top: 12.5px;
+   margin-bottom: 12.5px;
 }
 
 .menu .menu-titulo{

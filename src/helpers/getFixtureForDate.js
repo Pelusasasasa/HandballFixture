@@ -28,10 +28,12 @@ export const getFixtureForDate = async(date) => {
             },
             teams:{
                 away:{
+                    id: game.teams.away.id,
                     name: game.teams.away.name,
                     logo: game.teams.away.logo,
                 },
                 home:{
+                    id: game.teams.home.id,
                     name: game.teams.home.name,
                     logo: game.teams.home.logo,
                 }
