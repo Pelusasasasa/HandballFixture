@@ -34,7 +34,7 @@ const displayGame = () => {
                 ))
             }
         </div> */}
-        <div id='game' className="none">
+        <div id='game' >
           <GameEstadisticas id='153219'/>
         </div>
     </section>
