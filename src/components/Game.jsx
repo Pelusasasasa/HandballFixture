@@ -2,7 +2,7 @@ import { useState } from 'react';
 import '../css/game.css';
 import { GameEstadisticas } from './GameEstadisticas';
 
-export const Game = ({id,date,status,teams,scores}) => {
+export const Game = ({id,date,status,teams,scores,displayGame}) => {
 
       const [game,setGame] = useState(id);
 
@@ -12,10 +12,13 @@ export const Game = ({id,date,status,teams,scores}) => {
       }else{
         time = status.short;
       }
+      const viendo = () => {
+        displayGame(game);
+      }
 
   return (
         <>
-          <main id={id} className='estadistica'>
+          <main id={id} className='estadistica' onClick={viendo}>
               <div className="home" id={teams.home.id}>
                 <p className='score'>{scores.home}</p>
                 <img src={teams.home.logo} alt={teams.home.name} />

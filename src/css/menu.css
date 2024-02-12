@@ -21,17 +21,31 @@
 
 .menu .menu-titulo h2{
     margin: 0;
+    margin-top: 5px;
 }
 
 .menu .menu-item{
+    display: flex;
+    width: 100%;
+}
+
+.menu-item img{
+    height: auto;
+    width: 60px;
+    object-fit: contain;
+}
+
+.menu .menu-item-texto{
+    flex: 1;
     background-color: gray;
     margin: 0;
     font-size: 20px;
     color: white;
     padding: 10px 0;
+    align-self: center;
 }
 
-.menu .menu-item:hover{
+.menu .menu-item-texto:hover{
     cursor: pointer;
     background-color: rgba(128,128,128,0.7);
 }

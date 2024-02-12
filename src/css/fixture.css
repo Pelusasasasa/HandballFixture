@@ -1,5 +1,5 @@
 .none{
-    display: none;
+    display: none !important;
 }
 
 .fixture{
@@ -7,6 +7,7 @@
     grid-template-columns: 1fr 3fr;
     gap: 150px;
     background-color: lightgray;
+    position: relative;
 }
 
 .liga{
@@ -20,4 +21,14 @@
 .liga img{
     width: 30px;
     height: 30px;
+}
+
+
+#game{
+    position: absolute;
+    display: flex;
+    background-color: rgba(127, 127, 127, 0.8);
+    width: 100%;
+    height: 100%;
+    justify-content: center;
 }

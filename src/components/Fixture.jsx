@@ -4,19 +4,23 @@ import { Menu } from "./Menu";
 import { GameEstadisticas } from "./GameEstadisticas";
 
 import "../css/fixture.css";
+import { useState } from 'react';
 
 export const Fixture = () => {
 
-const {games} = useFetchGames('2024-01-29');
+const [gameDisplay, setGameDisplay] = useState(-1);
+
+const {games} = useFetchGames('2024-02-12');
 const {leagues} = useFetchLeagues();
 
-const displayGame = () => {
-  
+const displayGame = (id) => {
+  setGameDisplay(id);
+  document.getElementById('game').classList.remove('none');
 }
 
   return (
     <section className="fixture">
-        {/* <div>
+        <div>
             <Menu leagues={leagues}/>
         </div>
         <div>
@@ -28,14 +32,14 @@ const displayGame = () => {
                         <h1>{elem[0].league.name}</h1>
                     </div>
                     {elem.map(game => (
-                        <Game key={game.id} {...game}/>
+                        <Game key={game.id} {...game} displayGame={displayGame}/>
                     ))}
                   </div>
                 ))
             }
-        </div> */}
-        <div id='game' >
-          <GameEstadisticas id='153219'/>
+        </div>
+        <div id='game' className='none'>
+          <GameEstadisticas id={gameDisplay}/>
         </div>
     </section>
   )
