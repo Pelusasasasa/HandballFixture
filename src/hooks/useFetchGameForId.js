@@ -7,20 +7,22 @@ const URL = 'https://v1.handball.api-sports.io/';
 
 export const useFetchGameForId = (id) => {
     const [game,setGame] = useState({});
-
     const getGame = async(id) => {
-        const game = (await axios.get(`${URL}games?id=${id}`,{
+
+        const res = (await axios.get(`${URL}games?id=${id}`,{
             headers:{
                 'x-rapidapi-host': API_HOST,
                 'x-rapidapi-key': API_KEY
             }
         })).data.response;
-        setGame(game[0]);
+
+        setGame(res[0]);
     };
 
     useEffect(() => {
         getGame(id)
-    })
+    },[]);
+
   return {
     game
     }

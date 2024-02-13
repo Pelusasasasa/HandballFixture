@@ -4,9 +4,11 @@ const API_KEY = 'c743390c2b691ef922b56447758aa2be';
 const API_HOST = 'v1.handball.api-sports.io';
 const URL = 'https://v1.handball.api-sports.io/games';
 
-
-
 export const getFixtureForDate = async(date) => {
+    
+    let gamesReducidos = [];
+
+    //Traemos los juegos
     const data = (await axios.get(`${URL}?date=${date}`,{
         headers: {
             'x-rapidapi-host': API_HOST,
@@ -14,6 +16,7 @@ export const getFixtureForDate = async(date) => {
         }
     })).data;
 
+    //Retornamos los atributos que nos interesan
     const games = data.response.map(game => (
         {
             id: game.id,
@@ -45,7 +48,7 @@ export const getFixtureForDate = async(date) => {
         }
     ));
 
-    let gamesReducidos = [];
+    //Ordenalos los juegos por nombre de ligas
     games.sort( (a,b) => {
 
         if (a.leagueName > b.leagueName) {
@@ -57,21 +60,22 @@ export const getFixtureForDate = async(date) => {
 
     });
 
-if (games.length > 0) {
-    const resultado = games.reduce((acumulador,game) => {
-        
+    //seParamos en un arreglo de arreglos dependiendo de la liga
+    if (games.length > 0) {
+        const resultado = games.reduce((acumulador,game) => {
+            
 
-        if(!acumulador[game.league.name]){
-            acumulador[game.league.name] = [];
-        }
+            if(!acumulador[game.league.name]){
+                acumulador[game.league.name] = [];
+            }
 
-        acumulador[game.league.name].push(game);
+            acumulador[game.league.name].push(game);
 
-        return acumulador;
-    }, {});
+            return acumulador;
+        }, {});
 
-    gamesReducidos = Object.values(resultado);
-}
+        gamesReducidos = Object.values(resultado);
+    };
 
     return gamesReducidos;
 }

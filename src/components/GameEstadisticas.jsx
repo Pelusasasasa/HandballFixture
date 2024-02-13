@@ -2,12 +2,20 @@ import { useFetchGameForId } from "../hooks/useFetchGameForId";
 import '../css/GameEstadistica.css'
 
 export const GameEstadisticas = ({id}) => {
-  console.log(id)
+  
+  //Si se ejecuto antes de hacer un click no no strae nada
   if (id === -1) {
     return;
   }
-  const {game} = useFetchGameForId(id)  
-  const {date,teams,scores,league,country,status,periods} = game ? game.response : {};
+
+  const {game} = useFetchGameForId(id);
+  
+  //Si el juego es un objeto vacion no retorna nada
+  if (Object.keys(game).length === 0) {
+    return;
+  };
+
+  const {date,teams,scores,league,country,status,periods} = game ? game : {};
   const {home,away} = teams ? teams : {};
   
   return (

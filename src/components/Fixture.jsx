@@ -2,14 +2,13 @@ import { useFetchGames, useFetchLeagues } from '../hooks'
 import { Game } from "./Game";
 import { Menu } from "./Menu";
 import { GameEstadisticas } from "./GameEstadisticas";
+import { useState } from 'react';
 
 import "../css/fixture.css";
-import { useState } from 'react';
 
 export const Fixture = () => {
 
 const [gameDisplay, setGameDisplay] = useState(-1);
-
 const {games} = useFetchGames('2024-02-12');
 const {leagues} = useFetchLeagues();
 
@@ -21,7 +20,7 @@ const displayGame = (id) => {
   return (
     <section className="fixture">
         <div>
-            <Menu leagues={leagues}/>
+            {/* <Menu leagues={leagues}/> */}
         </div>
         <div>
             {
