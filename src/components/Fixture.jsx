@@ -9,18 +9,24 @@ import "../css/fixture.css";
 export const Fixture = () => {
 
 const [gameDisplay, setGameDisplay] = useState(-1);
-const {games} = useFetchGames('2024-02-12');
+const [mostrarGame, setMostrarGame] = useState(false);
+
+const {games} = useFetchGames('2024-02-14');
 const {leagues} = useFetchLeagues();
 
 const displayGame = (id) => {
   setGameDisplay(id);
-  document.getElementById('game').classList.remove('none');
+  console.log("a")
+  setMostrarGame(true);
 }
+const cerrarGame = () => {
+  setMostrarGame(false);
+};
 
   return (
     <section className="fixture">
         <div>
-            {/* <Menu leagues={leagues}/> */}
+            <Menu leagues={leagues}/>
         </div>
         <div>
             {
@@ -37,9 +43,9 @@ const displayGame = (id) => {
                 ))
             }
         </div>
-        <div id='game' className='none'>
-          <GameEstadisticas id={gameDisplay}/>
-        </div>
+        {
+          mostrarGame && <div id='game' onClick={cerrarGame}><GameEstadisticas id={gameDisplay}/></div>
+        }
     </section>
   )
 }
